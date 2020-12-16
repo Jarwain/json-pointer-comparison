@@ -6,7 +6,7 @@ let util = require('util');
 let _ = require('lodash');
 let columnify = require('columnify');
 
-let ptr = require('json-ptr');
+let {JsonPointer: ptr} = require('json-ptr');
 let ptr0 = require('json-pointer');
 let ptr1 = require('jsonpointer');
 
@@ -179,8 +179,8 @@ function summarize(report, operation) {
   });
   summary = _.sortBy(summary, 'avg');
   _.rest(summary).forEach(sample => {
-    if (typeof(sample.avg) === 'number') {
-      sample.slower = format('%d%%', ((sample.avg-summary[0].avg)/summary[0].avg* 100).toFixed(2));
+    if (typeof (sample.avg) === 'number') {
+      sample.slower = format('%d%%', ((sample.avg - summary[0].avg) / summary[0].avg * 100).toFixed(2));
     }
   });
   console.log(NEWLINE + columnify(summary, summaryReportOptions) + NEWLINE);
@@ -196,7 +196,7 @@ function compareFlatten(data) {
       }
     });
   }
-  console.log(NEWLINE+columnify(report, comparisonReportOptions));
+  console.log(NEWLINE + columnify(report, comparisonReportOptions));
   summarize(report, 'flatten');
 }
 
@@ -254,6 +254,6 @@ loadFile(dataFile, (err, data) => {
     return;
   }
   performComparisons(data,
-    takeRandomPointers(ptr.list(data), RANDOM_POINTER_COUNT)
+    takeRandomPointers(ptr.listPointers(data), RANDOM_POINTER_COUNT)
   );
 });

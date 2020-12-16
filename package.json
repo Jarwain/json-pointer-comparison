@@ -9,13 +9,16 @@
     "pointers",
     "fragmentId"
   ],
+  "scripts": {
+    "start": "node index.js"
+  },
   "main": "index.js",
   "dependencies": {
     "columnify": "^1.5.2",
-    "json-pointer": "^0.3.0",
-    "json-ptr": "^0.3.1",
-    "jsonpointer": "^3.0.0",
-    "lodash": "^3.10.1"
+    "json-pointer": "^0.6.1",
+    "json-ptr": "^2.0.0",
+    "jsonpointer": "^4.1.0",
+    "lodash": "^4.17.20"
   },
   "license": "MIT",
   "repository": {
